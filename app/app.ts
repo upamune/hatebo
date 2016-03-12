@@ -1,8 +1,6 @@
-import {App, IonicApp, Platform} from 'ionic/ionic';
-
+import {App, IonicApp, Platform} from 'ionic-angular';
 import {GettingStartedPage} from './pages/getting-started/getting-started';
 import {ListPage} from './pages/list/list';
-import {GridPage} from './pages/grid/grid';
 
 
 @App({
@@ -10,20 +8,18 @@ import {GridPage} from './pages/grid/grid';
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class MyApp {
-  constructor(app: IonicApp, platform: Platform) {
-    this.app = app;
-    this.platform = platform;
+  rootPage: any = GettingStartedPage;
+  pages: Array<{title: string, component: any}>
 
+  constructor(private app: IonicApp, private platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Getting Started', component: GettingStartedPage },
-      { title: 'List', component: ListPage },
-      { title: 'Grid Icons', component: GridPage }
+      { title: 'List', component: ListPage }
     ];
 
-    this.rootPage = GettingStartedPage;
   }
 
   initializeApp() {
